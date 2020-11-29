@@ -1,0 +1,215 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+* {
+    padding:0;
+    margin:0;
+    font-family: 'Montserrat', sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+.home-container {
+    height:100%;
+    width:100vw;
+    background-image:url('https://simple-time-assets.s3-us-west-2.amazonaws.com/home-background');
+    background-size:cover;
+    background-attachment:fixed;
+    & .header {
+        height:100vh;
+        padding-top:45vh;
+        box-sizing:border-box;
+        text-align:center;
+        & h1 {
+            text-transform:uppercase;
+            font-size:45px;
+            font-weight:300;
+            width:85%;
+            margin:0 auto;
+            text-align:center;
+            color:white;
+        }
+        & .logo {
+            width:400px;
+            height:auto;
+            position:absolute;
+            top:25px;
+            left:15px;
+        }
+        & .learn-more {
+           position:absolute;
+           bottom:10px;
+           left:50%;
+           transform:translateX(-50%);
+           cursor:pointer;
+           & img {
+               width:40px;
+               margin-top:10px;
+               &:hover {
+                   width:42px;
+                   margin-top:8px;
+               }
+           }
+           & p {
+               color:white;
+           }
+        }
+    }
+    & .section-1 {
+        height:100vh;
+        width:100%;
+        background-color:#6EC2CB;
+        padding-top:50px;
+        box-sizing:border-box;
+        display:flex;
+        justify-content:center;
+        position:relative;
+        &__why-us {
+            display:flex;
+            margin-left:45px;
+            align-items:center;
+            padding-bottom:18vh;
+            & img {
+                width:475px;
+                height:317px;
+                margin-right:40px;
+            }
+            & h3 {
+                font-size:65px;
+                color:white;
+                font-weight:400;
+            }
+            & p {
+                font-size:29px;
+                color:white;
+                font-weight:300;
+                width:75%;
+            }
+        }
+        & .learn-more {
+            position:absolute;
+            bottom:10px;
+            left:50%;
+            transform:translateX(-50%);
+            cursor:pointer;
+            text-align:center;
+            & img {
+                width:40px;
+                margin:0 auto;
+                margin-top:10px;
+                &:hover {
+                    width:42px;
+                    margin-top:8px;
+                }
+            }
+            & p {
+                color:white;
+            }
+        }
+    }
+    & .section-2 {
+        height:100vh;
+        width:100%;
+        background-color:rgba(0,0,0,0);
+        padding-top:50px;
+        box-sizing:border-box;
+        display:flex;
+        justify-content:center;
+        position:relative;
+        &__why-us {
+            display:flex;
+            flex-direction:row-reverse;
+            margin-left:45px;
+            align-items:center;
+            padding-bottom:18vh;
+            & img {
+                width:475px;
+                height:317px;
+                margin-right:100px;
+            }
+            & h3 {
+                font-size:65px;
+                color:white;
+                font-weight:400;
+            }
+            & p {
+                font-size:29px;
+                color:white;
+                font-weight:300;
+                width:75%;
+            }
+        }
+        & .learn-more {
+            position:absolute;
+            bottom:10px;
+            left:50%;
+            transform:translateX(-50%);
+            cursor:pointer;
+            text-align:center;
+            & img {
+                width:40px;
+                margin:0 auto;
+                margin-top:10px;
+                &:hover {
+                    width:42px;
+                    margin-top:8px;
+                }
+            }
+            & p {
+                color:white;
+            }
+        }
+    }
+    & .section-3 {
+        height:100vh;
+        width:100%;
+        background-color:#617073;
+        padding-top:50px;
+        box-sizing:border-box;
+        display:flex;
+        justify-content:center;
+        position:relative;
+        &__why-us {
+            display:flex;
+            margin-left:45px;
+            align-items:center;
+            padding-bottom:18vh;
+            & img {
+                width:475px;
+                height:317px;
+                margin-right:40px;
+            }
+            & h3 {
+                font-size:65px;
+                color:white;
+                font-weight:400;
+            }
+            & p {
+                font-size:29px;
+                color:white;
+                font-weight:300;
+                width:75%;
+            }
+        }
+        & .learn-more {
+            position:absolute;
+            bottom:10px;
+            left:50%;
+            transform:translateX(-50%);
+            cursor:pointer;
+            text-align:center;
+            & img {
+                width:40px;
+                margin:0 auto;
+                margin-top:10px;
+                &:hover {
+                    width:42px;
+                    margin-top:8px;
+                }
+            }
+            & p {
+                color:white;
+            }
+        }
+    }
+}
