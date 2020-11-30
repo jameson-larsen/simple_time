@@ -2,11 +2,12 @@
     <head>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <div class="home-container">
         <div class="header">
             <img src="https://simple-time-assets.s3-us-west-2.amazonaws.com/simple-time-logo.png" alt="" class="logo">
-            <h1>We provide simple timekeeping solutions for small businesses.</h1>
+            <h1>We provide simple time keeping solutions for small businesses.</h1>
             <div class='learn-more' onclick="learnMoreClick()">
                 <p>WHY CHOOSE US?</p>
                 <img src="https://simple-time-assets.s3-us-west-2.amazonaws.com/down.png" alt="">
@@ -17,7 +18,7 @@
                 <img src="https://simple-time-assets.s3-us-west-2.amazonaws.com/main-page-side-1" alt="">
                 <div>
                     <h3>SIMPLICITY.</h3>
-                    <p>We take a simple approach to timekeeping, offering solutions for small business owners that are
+                    <p>We take a simple approach to time keeping, offering solutions for small business owners that are
                         easy to use and maintain.
                     </p>
                 </div>
@@ -47,8 +48,8 @@
                 <img src="https://simple-time-assets.s3-us-west-2.amazonaws.com/main-page-side-3" alt="">
                 <div>
                     <h3>ECONOMIC.</h3>
-                    <p>We know that as a small business owner, you likely don't have the resources to 
-                        use a more expensive time system.  We provide the best service, at a lower price.
+                    <p>We know that for small businesses, cost effectiveness is essential.  We provide the highest quality
+                        of service at the lowest price.
                     </p>
                 </div>
             </div>
@@ -58,7 +59,26 @@
             </div>
         </div>
         <div class="section-4">
-            
+            <div class="form-div">
+                <%= form_for :lead, url: "home_controller/send_email" do |form| %>
+                    <div class="form-section">
+                        <%= form.text_field :name, placeholder: "Your Name" %>
+                    </div>
+                    <div class="form-section">
+                        <%= form.text_field :company, placeholder: "Company" %>
+                    </div>
+                    <div class="form-section">
+                        <%= form.number_field :employees, placeholder: "Number of Employees" %>
+                    </div>
+                    <div class="form-section">
+                        <%= form.email_field :email, placeholder: "Email" %>
+                    </div>
+                    <div class="form-section">
+                        <%= form.telephone_field :phone, placeholder: "Phone Number" %>
+                    </div>
+                    <%= form.submit("Submit") %>
+                <% end  %>
+            </div>
         </div>
     </div>
 </html>

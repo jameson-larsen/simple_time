@@ -1,0 +1,16 @@
+$breakpoints: (
+    'smPhone': 349px,
+    'phone': 449px, 
+    'lgPhone': 575px,
+    'smTablet': 765px,
+    'tablet': 1050px,
+    'desktop': 1365px,
+);
+@mixin mq($width) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+        @media only screen and (max-width: $width) {
+            @content;
+        }
+    }
+}

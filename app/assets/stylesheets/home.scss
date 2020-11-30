@@ -1,6 +1,7 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import './mixins.scss';
 * {
     padding:0;
     margin:0;
@@ -28,6 +29,15 @@ html {
             margin:0 auto;
             text-align:center;
             color:white;
+            @include mq('smTablet') {
+                font-size:35px;
+            }
+            @include mq('lgPhone') {
+                font-size:28px;
+            }
+            @include mq('phone') {
+                font-size:23px;
+            }
         }
         & .logo {
             width:400px;
@@ -35,6 +45,15 @@ html {
             position:absolute;
             top:25px;
             left:15px;
+            @include mq('smTablet') {
+                width:320px;
+            }
+            @include mq('lgPhone') {
+                width:200px;
+            }
+            @include mq('phone') {
+                width:150px;
+            }
         }
         & .learn-more {
            position:absolute;
@@ -43,15 +62,18 @@ html {
            transform:translateX(-50%);
            cursor:pointer;
            & img {
-               width:40px;
+               width:30px;
                margin-top:10px;
                &:hover {
-                   width:42px;
+                   width:32px;
                    margin-top:8px;
                }
            }
            & p {
                color:white;
+               @include mq('lgPhone') {
+                   font-size:13px;
+               }
            }
         }
     }
@@ -73,17 +95,53 @@ html {
                 width:475px;
                 height:317px;
                 margin-right:40px;
+                @include mq('smTablet') {
+                    width:400px;
+                    height:auto;
+                }
+                @include mq('phone') {
+                    width:300px;
+                }
             }
             & h3 {
                 font-size:65px;
                 color:white;
                 font-weight:400;
+                @include mq('smTablet') {
+                    font-size:45px;
+                }
+                @include mq('lgPhone') {
+                    padding-top:25px;
+                }
             }
             & p {
                 font-size:29px;
                 color:white;
                 font-weight:300;
                 width:75%;
+                @include mq('smTablet') {
+                    font-size:26px;
+                }
+                @include mq('lgPhone') {
+                    font-size:23px;
+                }
+                @include mq('phone') {
+                    font-size:19px;
+                }
+            }
+            @include mq('tablet') {
+                flex-direction:column;
+                margin:0 auto;
+                & img {
+                    margin:0 auto;
+                }
+                & div {
+                    text-align:center;
+                    padding-top:20px;
+                }
+                & p {
+                    margin:0 auto;
+                }
             }
         }
         & .learn-more {
@@ -94,16 +152,19 @@ html {
             cursor:pointer;
             text-align:center;
             & img {
-                width:40px;
+                width:30px;
                 margin:0 auto;
                 margin-top:10px;
                 &:hover {
-                    width:42px;
+                    width:32px;
                     margin-top:8px;
                 }
             }
             & p {
                 color:white;
+                @include mq('lgPhone') {
+                    font-size:13px;
+                }
             }
         }
     }
@@ -126,17 +187,53 @@ html {
                 width:475px;
                 height:317px;
                 margin-right:100px;
+                @include mq('smTablet') {
+                    width:400px;
+                    height:auto;
+                }
+                @include mq('phone') {
+                    width:300px;
+                }
             }
             & h3 {
                 font-size:65px;
                 color:white;
                 font-weight:400;
+                @include mq('smTablet') {
+                    font-size:45px;
+                }
+                @include mq('lgPhone') {
+                    padding-top:25px;
+                }
             }
             & p {
                 font-size:29px;
                 color:white;
                 font-weight:300;
                 width:75%;
+                @include mq('smTablet') {
+                    font-size:26px;
+                }
+                @include mq('lgPhone') {
+                    font-size:23px;
+                }
+                @include mq('phone') {
+                    font-size:19px;
+                }
+            }
+            @include mq('tablet') {
+                flex-direction:column;
+                margin:0 auto;
+                & img {
+                    margin:0 auto;
+                }
+                & div {
+                    text-align:center;
+                    padding-top:20px;
+                }
+                & p {
+                    margin:0 auto;
+                }
             }
         }
         & .learn-more {
@@ -147,16 +244,19 @@ html {
             cursor:pointer;
             text-align:center;
             & img {
-                width:40px;
+                width:30px;
                 margin:0 auto;
                 margin-top:10px;
                 &:hover {
-                    width:42px;
+                    width:32px;
                     margin-top:8px;
                 }
             }
             & p {
                 color:white;
+                @include mq('lgPhone') {
+                    font-size:13px;
+                }
             }
         }
     }
@@ -178,17 +278,53 @@ html {
                 width:475px;
                 height:317px;
                 margin-right:40px;
+                @include mq('smTablet') {
+                    width:400px;
+                    height:auto;
+                }
+                @include mq('phone') {
+                    width:300px;
+                }
             }
             & h3 {
                 font-size:65px;
                 color:white;
                 font-weight:400;
+                @include mq('smTablet') {
+                    font-size:45px;
+                }
+                @include mq('lgPhone') {
+                    padding-top:25px;
+                }
             }
             & p {
                 font-size:29px;
                 color:white;
                 font-weight:300;
                 width:75%;
+                @include mq('smTablet') {
+                    font-size:26px;
+                }
+                @include mq('lgPhone') {
+                    font-size:23px;
+                }
+                @include mq('phone') {
+                    font-size:19px;
+                }
+            }
+            @include mq('tablet') {
+                flex-direction:column;
+                margin:0 auto;
+                & img {
+                    margin:0 auto;
+                }
+                & div {
+                    text-align:center;
+                    padding-top:20px;
+                }
+                & p {
+                    margin:0 auto;
+                }
             }
         }
         & .learn-more {
@@ -199,17 +335,106 @@ html {
             cursor:pointer;
             text-align:center;
             & img {
-                width:40px;
+                width:30px;
                 margin:0 auto;
                 margin-top:10px;
                 &:hover {
-                    width:42px;
+                    width:32px;
                     margin-top:8px;
                 }
             }
             & p {
                 color:white;
+                @include mq('lgPhone') {
+                    font-size:13px;
+                }
             }
         }
+    }
+
+    & .section-4 {
+        width:100%;
+        height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        & .form-div {
+            width:40%;
+            background-color:white;
+            height:100vh;
+            padding:0 40px 0 40px;
+            @include mq('smTablet') {
+                width:60%;
+            }
+            @include mq('lgPhone') {
+                width:80%;
+            }
+            @include mq('phone') {
+                width:100%;
+            }
+            & form {
+                text-align:center;
+                & .form-section {
+                    margin:0 auto;
+                    margin-top:60px;
+                    text-align:center;
+                    & input {
+                        height:40px;
+                        border:none;
+                        border-bottom:1px solid #b3b3b3;
+                        width:80%;
+                        margin:0 auto;
+                        @include mq('smTablet') {
+                            width:87%;
+                        }
+                        @include mq('lgPhone') {
+                            width:92%;
+                        }
+                        @include mq('phone') {
+                            width:97%;
+                        }
+                    }
+                    & input:focus {
+                        border:none;
+                        border-bottom:1px solid #6EC2CB;
+                        outline:none;
+                    }
+                }
+                & input[type=submit] {
+                    height:40px;
+                    width:80%;
+                    margin-top:120px;
+                    background-color:#6EC2CB;
+                    color:white;
+                    border:1px solid #b3b3b3;
+                    @include mq('phone') {
+                        margin-top:50px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.thank-you {
+    background-color:#617073;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    text-align:center;
+    width:100%;
+    & h1 {
+        font-size:60px;
+        margin-bottom:20px;
+    }
+    & p {
+        font-size:22px;
+        margin-bottom:15px;
+    }
+    & a {
+        color:white;
+        font-size:17px;
     }
 }
