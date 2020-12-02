@@ -7,6 +7,11 @@
     <div class="home-container">
         <div class="header">
             <img src="https://simple-time-assets.s3-us-west-2.amazonaws.com/simple-time-logo.png" alt="" class="logo">
+            <% if !user_signed_in? %>
+                <%= button_to "LOG IN", new_user_session_path %>
+            <% else %>
+                <%= button_to "LOG OUT", destroy_user_session_path, method: :delete %>
+            <% end %>
             <h1>We provide simple time keeping solutions for small businesses.</h1>
             <div class='learn-more' onclick="learnMoreClick()">
                 <p>WHY CHOOSE US?</p>
@@ -60,7 +65,7 @@
         </div>
         <div class="section-4">
             <div class="form-div">
-                <%= form_for :lead, url: "home_controller/send_email" do |form| %>
+                <%= form_for :lead, url: "send_email" do |form| %>
                     <div class="form-section">
                         <%= form.text_field :name, placeholder: "Your Name" %>
                     </div>
