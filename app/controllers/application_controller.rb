@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    around_action :switch_time_zone, :if => :current_user, only: :switch_time_zone
+    around_action :switch_time_zone, :if => :current_user
 
     def switch_time_zone(&block)
         Time.use_zone(current_user.time_zone, &block)
