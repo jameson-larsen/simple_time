@@ -1,0 +1,129 @@
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin:0;
+            padding:0;
+            border:none;
+            font-family: 'Montserrat', sans-serif;
+        }
+        html, body {
+            height:100%;
+            min-height:100%;
+        }
+        body {
+            display:grid;
+            grid-template-columns:120px 1fr;
+            grid-template-rows:100px 1fr;
+        }
+        .dashboard-header {
+            margin:0;
+            padding:0;
+            border:0;
+            width:100%;
+            background-color:#617073;
+            grid-row:1;
+            grid-column:1 /span 2;
+            height:100px;
+            z-index:99;
+            border-bottom:1px solid #a7c6c9;
+            position:relative;
+        }
+        .dashboard-sidebar {
+            height:100%;
+            background-color:#617073;
+            grid-column:1;
+            grid-row:1 /span 2;
+            padding-top:130px;
+            text-align:center;
+        }
+        .dashboard-content {
+            grid-row:2;
+            grid-column:2;
+            border:25px solid #a7c6c9;
+            height:100%;
+            width:100%;
+            background-color:#f2f2f2;
+        }
+        .logo {
+            width:200px;
+            height:auto;
+            position:absolute;
+            top:15px;
+            left:8px;
+        }
+        .status {
+            color:white;
+        }
+        .log-out-btn {
+            position:absolute;
+            margin:0;
+            padding:0;
+            top:50%;
+            transform:translateY(-50%);
+            right:12px;
+            width:100px;
+            height:40px;
+            background-color:#6EC2CB;
+            color:white;
+            border:none;
+            font-size:16px;
+        }
+        .dashboard-content {
+            display:grid;
+            grid-template-rows:1fr;
+            grid-template-columns:1fr 3fr;
+        }
+        .user-info {
+            grid-column:1;
+            height:100%;
+            border-right:1px solid #6EC2CB;
+            text-align:center;
+            padding-top:35px;
+        }
+        .user-info p {
+            text-align:left;
+            padding-left:35px;
+            margin-bottom:18px;
+        }
+        .user-info h2, .user-info img, .user-info h3 {
+            margin-bottom:30px;
+        }
+        .main-content {
+            grid-column:2;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-header"">
+        <img src="https://simple-time-assets.s3-us-west-2.amazonaws.com/simple-time-logo.png" alt="" class="logo">
+        <%= button_to "LOG OUT", destroy_user_session_path, method: :delete, class: "log-out-btn" %>
+    </div>
+    <div class="dashboard-sidebar">
+    <% if current_user.is_in? %>
+        <p class="status">STATUS: IN</p>
+    <% else %>
+        <p class="status">STATUS: OUT</p>
+    <% end %>
+    </div>
+    <div class="dashboard-content">
+        <div class="user-info">
+            <h2>Welcome, <%= current_user.f_name %></h2>
+            <img src="https://simple-time-assets.s3-us-west-2.amazonaws.com/profile.png">
+            <h3>Your Profile</h3>
+            <p>Name: <%= current_user.f_name + " " + current_user.l_name %></p>
+            <p>Email: <%= current_user.email %></p>
+            <p>Company: <%= @company.name %></p>
+            <p>Role: <%= current_user.user_role %></p>
+            <p>Last Punch: <%=current_user.last_punch_date %></p>
+        </div>
+        <div class="main-content">
+            <%= yield %>
+        </div>
+    </div>
+</body>
+</html>

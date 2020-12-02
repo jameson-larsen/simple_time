@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_072901) do
+ActiveRecord::Schema.define(version: 2020_12_02_160132) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.integer "num_employees"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "punches", force: :cascade do |t|
+    t.datetime "in"
+    t.datetime "out"
+    t.float "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
