@@ -96,6 +96,18 @@
                 grid-column:2;
                 height:100%;
             }
+            .sidebar-btn {
+                background-color:rgba(0,0,0,0);
+                margin-top:30px;
+            }
+            .sidebar-btn img {
+                width:55px;
+                margin-bottom:5px;
+                cursor:pointer;
+            }
+            .sidebar-btn p {
+                color:white;
+            }
         </style>
     </head>
     <body>
@@ -106,15 +118,17 @@
         <div class="dashboard-sidebar">
             <% if current_user.is_in? %>
                 <p class="status">STATUS: IN</p>
-                <%= button_to clock_out_path, method: :patch do %>
+                <%= button_to clock_out_path, method: :patch, class: :"sidebar-btn" do %>
                     <%=image_tag("https://simple-time-assets.s3-us-west-2.amazonaws.com/clock.png") %>
                     <p>Clock Out</p>
                 <% end %>
             <% else %>
                 <p class="status">STATUS: OUT</p>
-                <%=button_to "Clock In", clock_in_path, method: :patch %>
+                <%= button_to clock_in_path, method: :patch, class: :"sidebar-btn" do %>
+                    <%=image_tag("https://simple-time-assets.s3-us-west-2.amazonaws.com/clock.png") %>
+                    <p>Clock In</p>
+                <% end %>
             <% end %>
-            
         </div>
         <div class="dashboard-content">
             <div class="user-info">

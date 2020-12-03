@@ -1,6 +1,7 @@
-<h1>Successfully Clocked Out</h1>
-<p><%= current_user.last_time %></p>
-<p><%= @punch.in %></p>
-<p><%= @punch.out %></p>
-<p><%= @punch.duration %></p>
-<p><%= current_user.punches %></p>
+<div class="clock-redirect-page">
+    <h1>Successfully Clocked Out</h1>
+    <p>In: <%= @punch.in.strftime("%b %-d %Y, %l:%M%p") %></p>
+    <p>Out: <%= @punch.out.strftime("%b %-d %Y, %l:%M%p") %></p>
+    <p>Duration: <%= @punch.duration.round(2) %> hours</p>
+    <%= link_to "Go Back", request.referer.present? ? request.referer : default_path %>
+</div>
