@@ -7,5 +7,8 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'dashboard#index'
 
+  patch 'clock_in', to: 'punch#clock_in'
+  patch 'clock_out', to: 'punch#clock_out'
+
   root 'home#index'
 end

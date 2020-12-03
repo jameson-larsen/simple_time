@@ -104,11 +104,17 @@
             <%= button_to "LOG OUT", destroy_user_session_path, method: :delete, class: "log-out-btn" %>
         </div>
         <div class="dashboard-sidebar">
-        <% if current_user.is_in? %>
-            <p class="status">STATUS: IN</p>
-        <% else %>
-            <p class="status">STATUS: OUT</p>
-        <% end %>
+            <% if current_user.is_in? %>
+                <p class="status">STATUS: IN</p>
+                <%= button_to clock_out_path, method: :patch do %>
+                    <%=image_tag("https://simple-time-assets.s3-us-west-2.amazonaws.com/clock.png") %>
+                    <p>Clock Out</p>
+                <% end %>
+            <% else %>
+                <p class="status">STATUS: OUT</p>
+                <%=button_to "Clock In", clock_in_path, method: :patch %>
+            <% end %>
+            
         </div>
         <div class="dashboard-content">
             <div class="user-info">
