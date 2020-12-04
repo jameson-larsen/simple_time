@@ -13,14 +13,16 @@
                 border:none;
                 font-family: 'Montserrat', sans-serif;
             }
-            html, body {
-                height:100%;
-                min-height:100%;
+            html{
+                height: 100%;
+            }
+            body {
+                min-height: 100%;
             }
             body {
                 display:grid;
                 grid-template-columns:120px 1fr;
-                grid-template-rows:100px 1fr;
+                grid-template-rows:100px 1fr 120px;
             }
             .dashboard-header {
                 margin:0;
@@ -36,7 +38,6 @@
                 position:relative;
             }
             .dashboard-sidebar {
-                height:100%;
                 background-color:#617073;
                 grid-column:1;
                 grid-row:1 /span 2;
@@ -47,8 +48,6 @@
                 grid-row:2;
                 grid-column:2;
                 border:25px solid #a7c6c9;
-                height:100%;
-                width:100%;
                 background-color:#f2f2f2;
             }
             .logo {
@@ -114,6 +113,19 @@
             .fc-timegrid-slots tr {
                 height: 45px;
             }
+            .footer {
+                grid-row:3;
+                grid-column:1/span 2;
+                border-top:1px solid #a7c6c9;
+            }
+            .footer-section-1 {
+                background-color:#617073;
+                height:60px;
+            }
+            .footer-section-2 {
+                height:60px;
+                background-color:#6b858a;
+            }
         </style>
     </head>
     <body>
@@ -150,6 +162,10 @@
             <div class="main-content">
                 <%= yield %>
             </div>
+        </div>
+        <div class="footer">
+           <div class="footer-section-1"></div>
+           <div class="footer-section-2"></div>
         </div>
         <%= content_tag :div, class: "user_punches", data: {punches: @punches} do %>
         <% end %>
