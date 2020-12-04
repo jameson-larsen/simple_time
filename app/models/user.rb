@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :punches
 
   def last_punch_date
-    (Time.at(self.last_time)).strftime("%b %-d %Y, %l:%M%p")
+    #(Time.at(self.last_time)).strftime("%b %-d %Y, %l:%M%p")
+    time = self.last_time.to_i
   end
 end
