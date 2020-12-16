@@ -175,10 +175,15 @@
     <script>
         $(function() {
             var t = $('.user_info').data('last-time')
-            var options = {month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit' };
-            var d = new Date(t * 1000).toLocaleString(undefined, options)
-            d = d.replace (/,/g, "");
-            document.getElementById('last-user-punch').innerText = d
+            if(t === 0) {
+                document.getElementById('last-user-punch').innerText = "No punches yet."
+            }
+            else {
+                var options = {month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit' };
+                var d = new Date(t * 1000).toLocaleString(undefined, options)
+                d = d.replace (/,/g, "");
+                document.getElementById('last-user-punch').innerText = d
+            }
         })
     </script>
 </html>
