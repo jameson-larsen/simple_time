@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'send_email', to: 'home#send_email'
 
   get 'dashboard', to: 'dashboard#index'
+  get 'schedule', to: 'dashboard#schedule'
 
   patch 'clock_in', to: 'punch#clock_in'
   patch 'clock_out', to: 'punch#clock_out'

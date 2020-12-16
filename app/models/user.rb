@@ -9,7 +9,8 @@ class User < ApplicationRecord
   enum status: [:is_in, :is_out]
 
   belongs_to :company
-  has_many :punches
+  has_many :punches, dependent: :destroy
+  has_many :shifts, dependent: :destroy
 
   def last_punch_date
     #(Time.at(self.last_time)).strftime("%b %-d %Y, %l:%M%p")

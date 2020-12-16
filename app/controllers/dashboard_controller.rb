@@ -7,4 +7,10 @@ class DashboardController < ApplicationController
         @company = Company.find(current_user.company_id)
         @punches = current_user.punches
     end
+
+    def schedule
+        @user = current_user
+        @company = Company.find(current_user.company_id)
+        @shifts = current_user.shifts
+    end
 end

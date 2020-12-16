@@ -1,0 +1,20 @@
+<%= content_tag :div, class: "user_shifts", data: {shifts: @shifts} do %>
+<% end %>
+<script>
+
+    $(function() {
+        var calendarEl = document.getElementById('calendar');
+        var userShifts = $('.user_shifts').data('shifts')
+        userShifts = userShifts.map(i => {
+            return {id: i.id, start: i.start, end: i.end, name: "event"}
+        })
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'timeGridWeek',
+            events: userShifts,
+            allDaySlot:false,
+            scrollTime:'08:00:00'
+        });
+        calendar.render();
+    });
+</script>
+<div id='calendar'></div>
