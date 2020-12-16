@@ -33,6 +33,7 @@ html {
             color:white;
             border:none;
             font-size:18px;
+            cursor:pointer;
             @include mq('lgPhone') {
                 top:20px;
                 right:20px;

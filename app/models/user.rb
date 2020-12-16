@@ -15,4 +15,13 @@ class User < ApplicationRecord
     #(Time.at(self.last_time)).strftime("%b %-d %Y, %l:%M%p")
     time = self.last_time.to_i
   end
+
+  def weekly_hours
+    r = 0
+    self.punches.where(created_at: Date.today.beginning_of_week.in_time_zone(self.time_zone)..Date.today.beginning_of_week.in_time_zone(self.time_zone) + 1.week).each do |p|
+      r = r + p.duration
+    end
+    return "%.2f" % r
+  end
+
 end
