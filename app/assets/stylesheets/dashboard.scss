@@ -127,3 +127,26 @@
 .fc-col-header-cell-cushion {
     font-size:13px;
 }
+#legend {
+    height:70px;
+    width:100%;
+    display:flex;
+    & .key {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        font-size:10px;
+        margin-left:20px;
+        & .identifier {
+            width:20px;
+            height:20px;
+        }
+        & #shift {
+            background-color:#617073;
+        }
+        & #punch {
+            background-color:#a7c6c9;
+        }
+    }
+}

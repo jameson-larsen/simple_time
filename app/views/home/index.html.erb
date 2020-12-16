@@ -11,6 +11,7 @@
                 <%= button_to "LOG IN", new_user_session_path %>
             <% else %>
                 <%= button_to "LOG OUT", destroy_user_session_path, method: :delete %>
+                <%= link_to "User Dashboard", dashboard_path %>
             <% end %>
             <h1>We provide simple time keeping solutions for small businesses.</h1>
             <div class='learn-more' onclick="learnMoreClick()">

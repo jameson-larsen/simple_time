@@ -5,7 +5,7 @@ class PunchController < ApplicationController
     def clock_in
         current_user.update!(last_time: Time.current, status:0)
         flash[:notice] = "Successfully clocked in!"
-        redirect_back(fallback_location: 'dashboard_controller#index')
+        redirect_to :controller => 'dashboard', :action => 'index'
     end
 
     def clock_out
@@ -16,6 +16,6 @@ class PunchController < ApplicationController
         @punch = current_user.punches.build(in:i,out:o,duration:d)
         @punch.save!
         flash[:notice] = "Successfully clocked out!"
-        redirect_back(fallback_location: 'dashboard_controller#index')
+        redirect_to :controller => 'dashboard', :action => 'index'
     end
 end

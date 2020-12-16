@@ -4,7 +4,7 @@
         var calendarEl = document.getElementById('calendar');
         var userPunches = $('.user_punches').data('punches')
         userPunches = userPunches.filter(i => i.duration >= 0.25).map(i => {
-            return {id: i.id, start: i.in, end: i.out, name: "event"}
+            return {id: i.id, start: i.in, end: i.out, name: "punch", color: '#a7c6c9'}
         })
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'timeGridWeek',

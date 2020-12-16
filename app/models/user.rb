@@ -24,5 +24,5 @@ class User < ApplicationRecord
     end
     return "%.2f" % r
   end
-
+  
 end
