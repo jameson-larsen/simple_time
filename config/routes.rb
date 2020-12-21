@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'schedule', to: 'dashboard#schedule'
   get 'employees', to: 'dashboard#employees'
   get 'employee/:id', to: 'dashboard#show_employee', as: 'employee'
+  get 'employee/:id/calendar', to: 'dashboard#employee_calendar', as: 'employee_calendar'
 
   patch 'clock_in', to: 'punch#clock_in'
   patch 'clock_out', to: 'punch#clock_out'

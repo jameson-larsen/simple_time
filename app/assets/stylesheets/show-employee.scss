@@ -1,3 +1,34 @@
 .employee-profile-container {
     padding:30px;
+    & p, h1 {
+        margin-bottom:20px;
+    }
+    & .hours-between {
+        width:400px;
+        height:100px;
+        border-radius:6px;
+        background-color:#deebec;
+        text-align:center;
+        padding:25px 10px;
+        border:1px solid #c4cfd1;
+        margin-bottom:20px;
+        & h4, h3 {
+            font-weight:400;
+        }
+        & h4 {
+            margin-bottom:20px;
+        }
+        & h3 {
+            margin-top:20px;
+        }
+        & .form {
+            margin-top:25px;
+            display:grid;
+            grid-template-columns:4fr 1fr 4fr 1fr;
+            justify-items:center;
+            & input {
+                width:150px;
+            }
+        }
+    }
 }

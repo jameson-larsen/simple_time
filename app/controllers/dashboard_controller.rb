@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
     before_action :authenticate_user!
     before_action :is_admin?, only: [:employees, :show_employee]
     before_action :set_vars
-    before_action :same_company?, only: [:show_employee]
+    before_action :same_company?, only: [:show_employee, :employee_calendar]
 
     def index
         @punches = current_user.punches
@@ -21,6 +21,13 @@ class DashboardController < ApplicationController
 
     def show_employee
         @employee = User.find(params[:id])
+        @hours_between = @employee.hours_between(params[:date1],params[:date2])
+    end
+
+    def employee_calendar
+        @employee = User.find(params[:id])
+        @shifts = @employee.shifts
+        @punches = @employee.punches
     end
 
     private

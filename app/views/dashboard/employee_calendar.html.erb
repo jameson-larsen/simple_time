@@ -1,0 +1,43 @@
+<%= content_tag :div, class: "user_shifts", data: {shifts: @shifts} do %>
+<% end %>
+<%= content_tag :div, class: "user_punches", data: {upunches: @punches} do %>
+<% end %>
+<script>
+    
+    $(function() {
+        var calendarEl = document.getElementById('calendar');
+            
+        var userShifts = $('.user_shifts').data('shifts')
+        userShifts = userShifts.map(i => {
+            return {id: i.id, start: i.start, end: i.end, name: "shift", color: '#617073'}
+        })
+            
+        var pastPunches = $('.user_punches').data('upunches')
+        pastPunches = pastPunches.filter(i => i.duration > 0.25).map(i => {
+            return {id: i.id, start: i.in, end: i.out, name: "punch", color: '#a7c6c9'}
+        })
+            
+        var allEvents = userShifts.concat(pastPunches)
+            
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'timeGridWeek',
+            events: allEvents,
+            allDaySlot:false,
+            slotEventOverlap:false,
+            scrollTime:'08:00:00'
+        });
+        calendar.render();
+    });
+</script>
+<h2 style="margin-top:15px;margin-left:15px;"><%= @employee.f_name + " " + @employee.l_name %></h2>
+<div id='calendar'></div>
+<div id='legend'>
+    <div class="key">
+        <div class="identifier" id="shift"></div>
+        <p>Scheduled Shift</p>
+    </div>
+    <div class="key">
+        <div class="identifier" id="punch"></div>
+        <p>Punch</p>
+    </div>
+</div>

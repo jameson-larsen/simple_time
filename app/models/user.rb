@@ -25,6 +25,18 @@ class User < ApplicationRecord
     return "%.2f" % r
   end
 
+  def hours_between(date1, date2)
+    if date1 && date2 && (date1.to_date < date2.to_date)
+      r = 0
+      self.punches.where(created_at: date1.to_date..date2.to_date).each do |p|
+        r = r + p.duration
+      end
+      return "%.2f" % r
+    else
+      return 0
+    end
+  end
+
   def self.search(search)
     if search 
         where(["lower(f_name) LIKE ?","%#{search.downcase}%"]).or(where(["lower(l_name) LIKE ?","%#{search.downcase}%"])).or(where(id: search.to_i))

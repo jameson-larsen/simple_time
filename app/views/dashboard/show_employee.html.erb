@@ -3,4 +3,32 @@
     <p>Name: <%= @employee.f_name + " " + @employee.l_name %></p>
     <p>Employee ID: <%= @employee.id %></p>
     <p>Hours this week: <%= @employee.weekly_hours %></p>
+    <div class="hours-between">
+        <h4 class="label">Hours Between:</h4>
+        <%= form_with(url: employee_path(@employee) , method: 'get', local: true) do %>
+            <%= text_field_tag(:date1, "", placeholder: "Start Date", class: "datepicker")%>
+            <span>-</span>
+            <%= text_field_tag(:date2, "", placeholder: "End Date", class: "datepicker")%>
+            <%= submit_tag("Submit") %>
+        <% end %>
+        <h3><%= @hours_between %> hours</h3>
+    </div>
+    <p id="last-employee-punch"></p>
+    <p><%= link_to "Employee Calendar", employee_calendar_path(@employee)  %></p>
+    <%= content_tag :div, class: "employee_info", data: {last_time: @employee.last_punch_date} do %>
+    <% end %>
 </div>
+<script>
+    $(function() {
+        var t = $('.employee_info').data('last-time')
+        if(t === 0) {
+            document.getElementById('last-employee-punch').innerText = "No punches yet."
+        }
+        else {
+            var options = {month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit' };
+            var d = new Date(t * 1000).toLocaleString(undefined, options)
+            d = d.replace (/,/g, "");
+            document.getElementById('last-employee-punch').innerText = "Last Punch: " + d
+        }
+    })
+</script>
