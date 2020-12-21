@@ -35,6 +35,16 @@
                 <%=image_tag("https://simple-time-assets.s3-us-west-2.amazonaws.com/schedule.png") %>
                 <p>Schedule</p>
             <% end %>
+            <%= button_to root_path, method: :get, class: :"sidebar-btn" do %>
+                <%=image_tag("https://simple-time-assets.s3-us-west-2.amazonaws.com/briefcase-256.png") %>
+                <p>Request <br>Time Off</p>
+            <% end %>
+            <% if current_user.user_role == "admin" %>
+                <%= button_to employees_path, method: :get, class: :"sidebar-btn" do %>
+                    <%= image_tag("https://simple-time-assets.s3-us-west-2.amazonaws.com/employee.png") %>
+                    <p>Employees</p>
+                <% end %>
+            <% end %>
         </div>
         <div class="dashboard-content">
             <div class="user-info">

@@ -24,5 +24,13 @@ class User < ApplicationRecord
     end
     return "%.2f" % r
   end
+
+  def self.search(search)
+    if search 
+        where(["lower(f_name) LIKE ?","%#{search.downcase}%"]).or(where(["lower(l_name) LIKE ?","%#{search.downcase}%"])).or(where(id: search.to_i))
+    else
+        all
+    end
+  end
   
 end

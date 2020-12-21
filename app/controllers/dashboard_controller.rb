@@ -1,17 +1,40 @@
 class DashboardController < ApplicationController
     protect_from_forgery with: :exception
     before_action :authenticate_user!
+    before_action :is_admin?, only: [:employees, :show_employee]
+    before_action :set_vars
+    before_action :same_company?, only: [:show_employee]
 
     def index
-        @user = current_user
-        @company = Company.find(current_user.company_id)
         @punches = current_user.punches
     end
 
     def schedule
-        @user = current_user
-        @company = Company.find(current_user.company_id)
         @shifts = current_user.shifts
         @punches = current_user.punches
+    end
+
+    def employees
+        @admin = current_user
+        @employees = @company.users.search(params[:search]).order('l_name ASC')
+    end
+
+    def show_employee
+        @employee = User.find(params[:id])
+    end
+
+    private
+    def is_admin?
+        redirect_to root_path unless current_user.user_role == "admin"
+    end
+
+    def set_vars
+        @company = Company.find(current_user.company_id)
+        @user = current_user
+    end
+
+    def same_company?
+        e =  User.find(params[:id])
+        redirect_to root_path unless current_user.company_id == e.company_id
     end
 end
