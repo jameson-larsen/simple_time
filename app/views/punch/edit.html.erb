@@ -1,0 +1,12 @@
+<div class="edit-punch-form-container">
+  <div class="edit-punch-form">
+    <%= form_for @punch, url: update_punch_path do |p| %>
+        <h2>Edit Punch</h2>
+        <%= p.text_field :in, class: "datepicker-time", value: @punch.in.in_time_zone(current_user.time_zone) %><br>
+        
+        <%= p.text_field :out, class: "datepicker-time", value: @punch.out.in_time_zone(current_user.time_zone) %><br>
+    
+        <%= p.submit "Submit" %>
+    <% end %>
+   </div>
+</div>

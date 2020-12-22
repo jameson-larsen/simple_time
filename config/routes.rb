@@ -10,9 +10,12 @@ Rails.application.routes.draw do
   get 'employees', to: 'dashboard#employees'
   get 'employee/:id', to: 'dashboard#show_employee', as: 'employee'
   get 'employee/:id/calendar', to: 'dashboard#employee_calendar', as: 'employee_calendar'
+  get 'employee/:id/punches', to: 'dashboard#employee_punches', as: 'employee_punches'
 
   patch 'clock_in', to: 'punch#clock_in'
   patch 'clock_out', to: 'punch#clock_out'
+  get 'employee/:id/punches/:punch_id/edit', to: 'punch#edit', as: 'edit_punch'
+  patch 'employee/:id/punches/:punch_id', to: 'punch#update', as: 'update_punch'
 
   root 'home#index'
 end
