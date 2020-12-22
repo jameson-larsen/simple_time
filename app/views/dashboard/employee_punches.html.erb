@@ -1,4 +1,5 @@
-<h2 style="margin-top:15px;margin-left:15px;"><%= @employee.f_name + " " + @employee.l_name %></h2>
+<h2 style="margin-top:15px;margin-left:15px;margin-bottom:15px;"><%= @employee.f_name + " " + @employee.l_name %></h2>
+<%= link_to "Add new/missed punch", new_punch_path(@employee), style: "margin-left:15px;" %>
 <div class="punch-main-container">
     <% @punches.each do |p| %>
         <div class="punch-section-container">
@@ -7,7 +8,10 @@
                 <%= p.out.in_time_zone(current_user.time_zone).strftime("Out: %m/%d/%Y at %I:%M %p , ") %>
                 <%= "#{'%.2f' % p.duration} hours" %>
             </div>
-            <%= button_to "Edit", edit_punch_path(@employee, p), method: :get %>
+            <div class="punch-edit-buttons">
+                <%= button_to "Edit", edit_punch_path(@employee, p), method: :get %>
+                <%= link_to "X", delete_punch_path(@employee, p), method: :delete, data: {confirm: "Are you sure?"}, class: "delete-X" %>
+            </div>
         </div>
     <% end %>
 </div>

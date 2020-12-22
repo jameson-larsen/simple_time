@@ -58,6 +58,17 @@
             background-color:#6EC2CB;
             color:white;
             align-self:center; 
+            cursor:pointer;
+        }
+    }
+    & .punch-edit-buttons {
+        display:flex;
+        & .delete-X {
+            font-size:25px;
+            color:red;
+            font-weight:bold;
+            text-decoration:none;
+            margin-left:10px;
         }
     }
 }

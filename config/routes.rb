@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   patch 'clock_out', to: 'punch#clock_out'
   get 'employee/:id/punches/:punch_id/edit', to: 'punch#edit', as: 'edit_punch'
   patch 'employee/:id/punches/:punch_id', to: 'punch#update', as: 'update_punch'
+  delete 'employee/:id/punches/:punch_id', to: 'punch#destroy', as: 'delete_punch'
+  get 'employee/:id/punches/new', to: 'punch#new', as: 'new_punch'
+  post 'employee/:id/punches/create', to: 'punch#create', as: 'create_punch'
 
   root 'home#index'
 end
