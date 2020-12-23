@@ -50,6 +50,17 @@
     display:grid;
     grid-template-columns:1fr 1fr;
     padding-bottom:5px;
+    & .punch-info {
+        display:flex;
+        align-items:center;
+        justify-content:space-evenly;
+        & .delete-X {
+            color:red;
+            text-decoration:none;
+            font-size:25px;
+            font-weight:bold;
+        }
+    }
     & form {
         display:grid;
         & input[type=submit] {
@@ -59,16 +70,6 @@
             color:white;
             align-self:center; 
             cursor:pointer;
-        }
-    }
-    & .punch-edit-buttons {
-        display:flex;
-        & .delete-X {
-            font-size:25px;
-            color:red;
-            font-weight:bold;
-            text-decoration:none;
-            margin-left:10px;
         }
     }
 }
