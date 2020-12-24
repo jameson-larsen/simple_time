@@ -18,6 +18,7 @@
     <%= content_tag :div, class: "employee_info", data: {last_time: @employee.last_punch_date} do %>
     <% end %>
     <p><%= link_to "Punch History/Correct Punches", employee_punches_path(@employee) %></p>
+    <p><%= link_to "Schedule, edit, or delete shifts", employee_shifts_path(@employee) %></p>
 </div>
 <script>
     $(function() {

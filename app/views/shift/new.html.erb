@@ -1,0 +1,12 @@
+<div class="edit-punch-form-container">
+  <div class="edit-punch-form">
+    <%= form_for @shift, url: create_shift_path do |s| %>
+        <h2>Create Shift</h2>
+        <%= s.text_field :start, class: "datepicker-time", placeholder: "Start" %><br>
+        
+        <%= s.text_field :end, class: "datepicker-time", placeholder: "End" %><br>
+    
+        <%= s.submit "Submit" %>
+    <% end %>
+   </div>
+</div>

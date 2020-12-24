@@ -1,3 +1,6 @@
+<div style="margin-left:15px;margin-top:15px;">
+    <%= link_to "Back", employee_path(@employee)%>
+</div>
 <h2 style="margin-top:15px;margin-left:15px;margin-bottom:15px;"><%= @employee.f_name + " " + @employee.l_name %></h2>
 <%= link_to "Add new/missed punch", new_punch_path(@employee), style: "margin-left:15px;" %>
 <div class="punch-main-container">

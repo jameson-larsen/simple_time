@@ -1,0 +1,18 @@
+<div style="margin-left:15px;margin-top:15px;">
+    <%= link_to "Back", employee_path(@employee)%>
+</div>
+<h2 style="margin-top:15px;margin-left:15px;margin-bottom:15px;"><%= @employee.f_name + " " + @employee.l_name %></h2>
+<%= link_to "Schedule new shift", new_shift_path(@employee), style: "margin-left:15px;" %>
+<div class="punch-main-container">
+    <% @shifts.each do |s| %>
+        <div class="punch-section-container">
+            <div class="punch-info">
+                <%= s.start.in_time_zone(current_user.time_zone).strftime("In: %m/%d/%Y at %I:%M %p , ") %>
+                <%= s.end.in_time_zone(current_user.time_zone).strftime("Out: %m/%d/%Y at %I:%M %p , ") %>
+                <%= "#{'%.2f' % s.duration} hours" %>
+                <%= button_to "Edit", edit_shift_path(@employee, s), method: :get %>
+                <%= link_to "X", delete_shift_path(@employee, s), method: :delete, data: {confirm: "Are you sure?"}, class: "delete-X" %>
+            </div>
+        </div>
+    <% end %>
+</div>
