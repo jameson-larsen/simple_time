@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'dashboard#index'
   get 'schedule', to: 'dashboard#schedule'
+  get 'request_time_off', to: 'dashboard#req_time'
+  post 'request_time_off/create', to: 'dashboard#create_req_time', as: 'create_request'
   get 'employees', to: 'dashboard#employees'
   get 'employee/:id', to: 'dashboard#show_employee', as: 'employee'
   get 'employee/:id/calendar', to: 'dashboard#employee_calendar', as: 'employee_calendar'

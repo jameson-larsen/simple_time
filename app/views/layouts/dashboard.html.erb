@@ -35,7 +35,7 @@
                 <%=image_tag("https://simple-time-assets.s3-us-west-2.amazonaws.com/schedule.png") %>
                 <p>Schedule</p>
             <% end %>
-            <%= button_to root_path, method: :get, class: :"sidebar-btn" do %>
+            <%= button_to request_time_off_path, method: :get, class: :"sidebar-btn" do %>
                 <%=image_tag("https://simple-time-assets.s3-us-west-2.amazonaws.com/briefcase-256.png") %>
                 <p>Request <br>Time Off</p>
             <% end %>

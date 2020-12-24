@@ -5,7 +5,7 @@ class PunchController < ApplicationController
     before_action :same_company?, only: [:edit, :update, :destroy, :new, :create]
 
     def clock_in
-        current_user.update!(last_time: Time.current, status:0)
+        current_user.update(last_time: Time.current, status:0)
         if current_user.save
             flash[:notice] = "Successfully clocked in!"
         else 
@@ -18,9 +18,9 @@ class PunchController < ApplicationController
         i = current_user.last_time
         o = Time.current
         d = (o.to_f - i.to_f) / 3600.to_f
-        current_user.update!(last_time:o, status:1)
+        current_user.update(last_time:o, status:1)
         @punch = current_user.punches.build(in:i,out:o,duration:d)
-        if @punch.save!
+        if @punch.save
             flash[:notice] = "Successfully clocked out!"
         else
             flash[:alert] = "Clock out failed, please try again!"
@@ -38,16 +38,11 @@ class PunchController < ApplicationController
         @punch = Punch.find(params[:punch_id])
         d = params[:punch][:out].to_time.to_f - params[:punch][:in].to_time.to_f
         @punch.update(in: params[:punch][:in].to_time, out: params[:punch][:out].to_time, duration: d/3600.0)
-        if @punch.in < @punch.out
-            if @punch.save
-                flash[:notice] = "Successfully edited punch!"
-                redirect_to employee_punches_path(@employee)
-            else
-                flash[:alert] = "Punch edit failed!"
-                render :edit
-            end
+        if @punch.save
+            flash[:notice] = "Successfully edited punch!"
+            redirect_to employee_punches_path(@employee)
         else
-            flash[:alert] = "Clock out must be after clock in!"
+            flash[:alert] = @punch.errors.full_messages[0]
             render :edit
         end
     end
@@ -72,16 +67,11 @@ class PunchController < ApplicationController
         @employee = User.find(params[:id])
         d = (params[:punch][:out].to_time.to_f - params[:punch][:in].to_time.to_f) / 3600.to_f
         @punch = Punch.new(in: params[:punch][:in].to_time, out: params[:punch][:out].to_time, duration: d, user_id: @employee.id)
-        if @punch.in < @punch.out
-            if @punch.save!
-                flash[:notice] = "Punch successfully created!"
-                redirect_to employee_punches_path(@employee)
-            else
-                flash[:alert] = "Punch could not be created!"
-                render :new
-            end
+        if @punch.save
+            flash[:notice] = "Punch successfully created!"
+            redirect_to employee_punches_path(@employee)
         else
-            flash[:alert] = "Clock out must be after clock in!"
+            flash[:alert] = @punch.errors.full_messages[0]
             render :new
         end
     end

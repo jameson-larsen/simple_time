@@ -150,3 +150,25 @@
         }
     }
 }
+.time-off-form {
+    & form {
+        padding-top:15px;
+        padding-left:15px;
+        & h2 {
+            margin-bottom:20px;
+        }
+        & input[type=text] {
+            margin-bottom:20px;
+            width:250px;
+            height:30px;
+            border-radius:5px;
+        }
+        & input[type=submit] {
+            width:70px;
+            height:25px;
+            background-color:#a7c6c9;
+            border-radius:5px;
+            color:white;
+        }
+    }
+}

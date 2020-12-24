@@ -11,6 +11,7 @@ class User < ApplicationRecord
   belongs_to :company
   has_many :punches, dependent: :destroy
   has_many :shifts, dependent: :destroy
+  has_many :time_off_requests, dependent: :destroy
 
   def last_punch_date
     #(Time.at(self.last_time)).strftime("%b %-d %Y, %l:%M%p")

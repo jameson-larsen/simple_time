@@ -40,6 +40,21 @@ class DashboardController < ApplicationController
         @shifts = @employee.shifts.where('start > ?', Date.today.in_time_zone(current_user.time_zone).beginning_of_day).order('created_at DESC')
     end
 
+    def req_time
+        @request = TimeOffRequest.new
+    end
+
+    def create_req_time
+        @request = TimeOffRequest.new(start: params[:time_off_request][:start].to_time, end: params[:time_off_request][:end].to_time, user_id: current_user.id, status:0)
+        if @request.save
+            flash[:notice] = "Request successfully created!"
+            redirect_to dashboard_path
+        else
+            flash[:alert] = @request.errors.full_messages[0]
+            render :req_time
+        end
+    end
+
     private
     def is_admin?
         redirect_to root_path unless current_user.user_role == "admin"

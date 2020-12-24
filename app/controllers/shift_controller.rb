@@ -13,16 +13,11 @@ class ShiftController < ApplicationController
         @employee = User.find(params[:id])
         d = (params[:shift][:end].to_time.to_f - params[:shift][:start].to_time.to_f) / 3600.to_f
         @shift = Shift.new(start: params[:shift][:start].to_time, end: params[:shift][:end].to_time, duration: d, user_id: @employee.id)
-        if @shift.start < @shift.end
-            if @shift.save!
-                flash[:notice] = "Shift successfully created!"
-                redirect_to employee_shifts_path(@employee)
-            else
-                flash[:alert] = "Shift could not be created!"
-                render :new
-            end
+        if @shift.save
+            flash[:notice] = "Shift successfully created!"
+            redirect_to employee_shifts_path(@employee)
         else
-            flash[:alert] = "Start must be before end!"
+            flash[:alert] = @shift.errors.full_messages[0]
             render :new
         end
     end
@@ -37,16 +32,11 @@ class ShiftController < ApplicationController
         @shift = Shift.find(params[:shift_id])
         d = params[:shift][:end].to_time.to_f - params[:shift][:start].to_time.to_f
         @shift.update(start: params[:shift][:start].to_time, end: params[:shift][:end].to_time, duration: d/3600.0)
-        if @shift.start < @shift.end
-            if @shift.save
-                flash[:notice] = "Successfully edited shift!"
-                redirect_to employee_shifts_path(@employee)
-            else
-                flash[:alert] = "Shift edit failed!"
-                render :edit
-            end
+        if @shift.save
+            flash[:notice] = "Successfully edited shift!"
+            redirect_to employee_shifts_path(@employee)
         else
-            flash[:alert] = "Start must be before end!"
+            flash[:alert] = @shift.errors.full_messages[0]
             render :edit
         end
     end

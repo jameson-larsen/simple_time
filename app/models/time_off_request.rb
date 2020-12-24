@@ -1,4 +1,5 @@
-class Shift < ApplicationRecord
+class TimeOffRequest < ApplicationRecord
+    enum status: [:pending, :denied, :accepted]
     belongs_to :user
 
     validates_presence_of :start
