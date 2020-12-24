@@ -1,0 +1,12 @@
+<div class="edit-punch-form-container">
+  <div class="edit-punch-form">
+    <%= form_for @shift, url: update_shift_path do |s| %>
+        <h2>Edit Shift</h2>
+        <%= s.text_field :start, class: "datepicker-time", value: @shift.start.in_time_zone(current_user.time_zone) %><br>
+        
+        <%= s.text_field :end, class: "datepicker-time", value: @shift.end.in_time_zone(current_user.time_zone) %><br>
+    
+        <%= s.submit "Submit" %>
+    <% end %>
+   </div>
+</div>

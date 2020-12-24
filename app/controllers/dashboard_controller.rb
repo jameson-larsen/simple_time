@@ -1,9 +1,9 @@
 class DashboardController < ApplicationController
     protect_from_forgery with: :exception
     before_action :authenticate_user!
-    before_action :is_admin?, only: [:employees, :show_employee, :employee_calendar, :employee_punches]
+    before_action :is_admin?, only: [:employees, :show_employee, :employee_calendar, :employee_punches, :employee_shifts]
     before_action :set_vars
-    before_action :same_company?, only: [:show_employee, :employee_calendar, :employee_punches]
+    before_action :same_company?, only: [:show_employee, :employee_calendar, :employee_punches, :employee_shifts]
 
     def index
         @punches = current_user.punches
@@ -33,6 +33,11 @@ class DashboardController < ApplicationController
     def employee_punches
         @employee = User.find(params[:id])
         @punches = @employee.punches.order('created_at DESC')
+    end
+
+    def employee_shifts
+        @employee = User.find(params[:id])
+        @shifts = @employee.shifts.order('created_at DESC')
     end
 
     private

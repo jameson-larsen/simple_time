@@ -7,7 +7,7 @@
     </div>
     <div class="employee-list-container">
         <% @employees.each do |e|%>
-            <%= button_to e.l_name + ", " + e.f_name , employee_path(e), method: :get, class: :"employee-btn" %>
+            <p><%= link_to e.l_name + ", " + e.f_name, employee_path(e) %></p>
         <% end %>
     </div>
 </div>
