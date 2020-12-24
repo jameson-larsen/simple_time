@@ -2,14 +2,19 @@
     max-height:75vh;
     overflow-y:scroll;
     & .employee-list-container {
-        padding-left:50px;
-        margin-bottom:15px;
-        & p {
-            margin-top:8px;
-            font-size:20px;
-            & a {
-                color:rgb(11, 52, 114);
-            }
+        padding-left:25px;
+        display:grid;
+        grid-template-columns:repeat(4, 1fr);
+        grid-gap:20px;
+        & .emp-btn {
+            width:200px;
+            height:35px;
+            max-width:200px;
+            max-height:35px;
+            border-radius:5px;
+            background-color:#719397;
+            color:white;
+            padding:0 10px 0 10px;
         }
     }  
     & .employee-search {

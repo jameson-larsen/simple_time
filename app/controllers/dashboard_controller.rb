@@ -38,6 +38,7 @@ class DashboardController < ApplicationController
     def employee_shifts
         @employee = User.find(params[:id])
         @shifts = @employee.shifts.where('start > ?', Date.today.in_time_zone(current_user.time_zone).beginning_of_day).order('created_at DESC')
+        # @shifts = @employee.shifts.all
     end
 
     def req_time

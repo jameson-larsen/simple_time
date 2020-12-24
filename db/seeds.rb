@@ -70,3 +70,5 @@ User.create(f_name:"test", l_name:"test", email:"test63@test.com", password:"tes
 User.create(f_name:"test", l_name:"test", email:"test64@test.com", password:"testtest", password_confirmation:"testtest", user_role:0, company_id:1)
 User.create(f_name:"test", l_name:"test", email:"test65@test.com", password:"testtest", password_confirmation:"testtest", user_role:0, company_id:1)
 User.create(f_name:"test", l_name:"test", email:"test66@test.com", password:"testtest", password_confirmation:"testtest", user_role:0, company_id:1)
+User.create(f_name:"David", l_name:"Superlonglastnametotestifbuttonworks", email:"test67@test.com", password:"testtest", password_confirmation:"testtest", user_role:0, company_id:1)
+User.create(f_name:"jaquavious", l_name:"Superstinkerwoohoo", email:"test68@test.com", password:"testtest", password_confirmation:"testtest", user_role:0, company_id:1)
