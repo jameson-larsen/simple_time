@@ -19,19 +19,45 @@ class User < ApplicationRecord
 
   def weekly_hours
     r = 0
-    self.punches.where(created_at: Date.today.beginning_of_week.in_time_zone(self.time_zone)..Date.today.beginning_of_week.in_time_zone(self.time_zone) + 1.week).each do |p|
-      r = r + p.duration
+    begin_week = Date.today.beginning_of_week.in_time_zone(self.time_zone) - 1.day
+    end_week = Date.today.beginning_of_week.in_time_zone(self.time_zone) + 1.week - 1.day
+    arr1 = self.punches.where(out: begin_week..end_week)
+    arr2 = self.punches.where(in: begin_week..end_week).where("out > ?", end_week)
+    arr3 = arr1 + arr2
+    arr3.each do |p|
+      if p.in < begin_week
+        r = r + p.duration - ((p.out - begin_week.to_time).to_f / 3600.0)
+      elsif p.out > end_week
+        r = r + ((end_week).to_time - p.in).to_f / 3600.0
+      else
+        r = r + p.duration
+      end
     end
     return "%.2f" % r
   end
 
   def hours_between(date1, date2)
-    if date1 && date2 && (date1.to_date < date2.to_date)
-      r = 0
-      self.punches.where(created_at: date1.to_date..date2.to_date).each do |p|
-        r = r + p.duration
+    if !date1.nil? && !date2.nil? && date1 != "" && date2 != ""
+      if date1.to_date > date2.to_date
+        return 0
+      else
+        r = 0
+        date1 = date1.to_date.in_time_zone(self.time_zone)
+        date2 = date2.to_date.in_time_zone(self.time_zone).end_of_day
+        arr1 = self.punches.where(out: date1..date2)
+        arr2 = self.punches.where(in: date1..date2).where("out > ?", date2)
+        arr3 = arr1 + arr2
+        arr3.each do |p|
+          if p.in < date1
+            r = r + p.duration - ((p.out - date1.to_time).to_f / 3600.0)
+          elsif p.out > date2
+            r = r + ((date2).to_time - p.in).to_f / 3600.0
+          else
+            r = r + p.duration
+          end
+        end
+        return "%.2f" % r
       end
-      return "%.2f" % r
     else
       return 0
     end
