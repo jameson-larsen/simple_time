@@ -103,7 +103,7 @@
     color:white;
 }
 .fc-timegrid-slots tr {
-    height: 45px;
+    height: 25px;
 }
 .footer {
     grid-row:3;
@@ -156,6 +156,7 @@
         padding-left:15px;
         & h2 {
             margin-bottom:20px;
+            font-size:33px;
         }
         & input[type=text] {
             margin-bottom:20px;
