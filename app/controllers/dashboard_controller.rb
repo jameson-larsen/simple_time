@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
     protect_from_forgery with: :exception
     before_action :authenticate_user!
-    before_action :is_admin?, only: [:employees, :show_employee, :employee_calendar, :employee_punches, :employee_shifts]
+    before_action :is_admin?, only: [:employees, :show_employee, :employee_calendar, :employee_punches, :employee_shifts, :view_requests]
     before_action :set_vars
     before_action :same_company?, only: [:show_employee, :employee_calendar, :employee_punches, :employee_shifts]
 
@@ -46,7 +46,8 @@ class DashboardController < ApplicationController
     end
 
     def create_req_time
-        @request = TimeOffRequest.new(start: params[:time_off_request][:start].to_time, end: params[:time_off_request][:end].to_time, user_id: current_user.id, status:0)
+        @employee = current_user.f_name + " " + current_user.l_name
+        @request = TimeOffRequest.new(start: params[:time_off_request][:start].to_time, end: params[:time_off_request][:end].to_time, user_id: current_user.id, status:0, employee_name: @employee)
         if @request.save
             flash[:notice] = "Request successfully created!"
             redirect_to dashboard_path
@@ -54,6 +55,10 @@ class DashboardController < ApplicationController
             flash[:alert] = @request.errors.full_messages[0]
             render :req_time
         end
+    end
+
+    def view_requests
+        @requests = TimeOffRequest.all
     end
 
     private

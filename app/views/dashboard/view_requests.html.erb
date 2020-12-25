@@ -1,0 +1,12 @@
+<h2 style="margin-top:50px;margin-left:15px;margin-bottom:17px;font-size:35px;">Time Off Requests</h2>
+<div class="punch-main-container">
+    <% @requests.each do |r| %>
+        <div class="punch-section-container">
+            <div class="punch-info">
+                <%= r.employee_name + ", " %>
+                <%= r.start.in_time_zone(current_user.time_zone).strftime("Start: %m/%d/%Y at %I:%M %p , ") %>
+                <%= r.end.in_time_zone(current_user.time_zone).strftime("End: %m/%d/%Y at %I:%M %p  ") %>
+            </div>
+        </div>
+    <% end %>
+</div>

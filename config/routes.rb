@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'employee/:id/calendar', to: 'dashboard#employee_calendar', as: 'employee_calendar'
   get 'employee/:id/punches', to: 'dashboard#employee_punches', as: 'employee_punches'
   get 'employee/:id/shifts', to: 'dashboard#employee_shifts', as: 'employee_shifts'
+  get 'time_off_requests', to: 'dashboard#view_requests', as: 'view_requests'
 
   patch 'clock_in', to: 'punch#clock_in'
   patch 'clock_out', to: 'punch#clock_out'
