@@ -7,4 +7,14 @@
         
         <%= r.submit "Submit" %>
     <% end %>
+    <% @curr_requests.each do |r| %>
+        <div class="punch-section-container">
+            <div class="punch-info">
+                <%= r.employee_name + ", " %>
+                <%= r.start.in_time_zone(current_user.time_zone).strftime("Start: %m/%d/%Y at %I:%M %p , ") %>
+                <%= r.end.in_time_zone(current_user.time_zone).strftime("End: %m/%d/%Y at %I:%M %p,  ") %>
+                <%= r.status %>
+            </div>
+        </div>
+    <% end %>
 </div>

@@ -30,5 +30,8 @@ Rails.application.routes.draw do
   get 'employee/:id/shifts/new', to: 'shift#new', as: 'new_shift'
   post 'employee/:id/shifts/create', to: 'shift#create', as: 'create_shift'
 
+  patch 'time_off_request/:request_id/accept', to: 'time_off_request#accept', as: 'accept_request'
+  patch 'time_off_request/:request_id/deny', to: 'time_off_request#deny', as: 'deny_request'
+
   root 'home#index'
 end

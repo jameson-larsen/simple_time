@@ -1,4 +1,4 @@
-<h2 style="margin-top:50px;margin-left:15px;margin-bottom:17px;font-size:35px;">Time Off Requests</h2>
+<h2 style="margin-top:30px;margin-left:15px;margin-bottom:17px;font-size:35px;">Time Off Requests</h2>
 <div class="punch-main-container">
     <% @requests.each do |r| %>
         <div class="punch-section-container">
@@ -6,6 +6,8 @@
                 <%= r.employee_name + ", " %>
                 <%= r.start.in_time_zone(current_user.time_zone).strftime("Start: %m/%d/%Y at %I:%M %p , ") %>
                 <%= r.end.in_time_zone(current_user.time_zone).strftime("End: %m/%d/%Y at %I:%M %p  ") %>
+                <%= button_to "Accept", accept_request_path(r), method: :patch %>
+                <%= button_to "Deny", deny_request_path(r), method: :patch %>
             </div>
         </div>
     <% end %>

@@ -43,6 +43,7 @@ class DashboardController < ApplicationController
 
     def req_time
         @request = TimeOffRequest.new
+        @curr_requests = current_user.time_off_requests.where('start > ?', Date.today.in_time_zone(current_user.time_zone).beginning_of_day).order('created_at DESC')
     end
 
     def create_req_time
@@ -58,7 +59,7 @@ class DashboardController < ApplicationController
     end
 
     def view_requests
-        @requests = TimeOffRequest.all
+        @requests = TimeOffRequest.where(status:0)
     end
 
     private

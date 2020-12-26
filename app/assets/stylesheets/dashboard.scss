@@ -99,6 +99,11 @@
     margin-bottom:5px;
     cursor:pointer;
 }
+.sidebar-btn h1 {
+    font-size:45px;
+    color:white;
+    cursor:pointer;
+}
 .sidebar-btn p {
     color:white;
 }
@@ -173,4 +178,7 @@
             cursor:pointer;
         }
     }
+}
+.fc-timegrid-slot-label-cushion {
+    font-size:12px;
 }

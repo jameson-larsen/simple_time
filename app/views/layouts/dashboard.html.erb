@@ -37,7 +37,7 @@
             <% end %>
             <%= button_to request_time_off_path, method: :get, class: :"sidebar-btn" do %>
                 <%=image_tag("https://simple-time-assets.s3-us-west-2.amazonaws.com/briefcase-256.png") %>
-                <p>Request <br>Time Off</p>
+                <p>Time Off</p>
             <% end %>
             <% if current_user.user_role == "admin" %>
                 <%= button_to employees_path, method: :get, class: :"sidebar-btn" do %>
@@ -45,8 +45,8 @@
                     <p>Employees</p>
                 <% end %>
                 <%= button_to view_requests_path, method: :get, class: :"sidebar-btn" do %>
-                    <%= image_tag("https://simple-time-assets.s3-us-west-2.amazonaws.com/employee.png") %>
-                    <p>Time Off Requests</p>
+                    <h1><%= TimeOffRequest.where(status: 0).count %></h1>
+                    <p>TO Requests</p>
                 <% end %>
             <% end %>
         </div>
