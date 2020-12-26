@@ -1,20 +1,21 @@
 <div class="time-off-form">
     <%= form_for @request, url: create_request_path do |r| %>
-        <h2>Request Time Off</h2>
+        <h2 style="margin-top:15px;">Request Time Off</h2>
         <%= r.text_field :start, class: "datepicker-time", placeholder: "Start" %><br>
             
         <%= r.text_field :end, class: "datepicker-time", placeholder: "End" %><br>
         
         <%= r.submit "Submit" %>
     <% end %>
-    <% @curr_requests.each do |r| %>
-        <div class="punch-section-container">
-            <div class="punch-info">
-                <%= r.employee_name + ", " %>
-                <%= r.start.in_time_zone(current_user.time_zone).strftime("Start: %m/%d/%Y at %I:%M %p , ") %>
-                <%= r.end.in_time_zone(current_user.time_zone).strftime("End: %m/%d/%Y at %I:%M %p,  ") %>
-                <%= r.status %>
+    <% if !@curr_requests.nil? %>
+        <% @curr_requests.each do |r| %>
+            <div class="punch-section-container">
+                <div class="punch-info">
+                    <%= r.start.in_time_zone(current_user.time_zone).strftime("Start: %m/%d/%Y at %I:%M %p , ") %>
+                    <%= r.end.in_time_zone(current_user.time_zone).strftime("End: %m/%d/%Y at %I:%M %p,  ") %>
+                    <%= r.status %>
+                </div>
             </div>
-        </div>
+        <% end %>
     <% end %>
 </div>

@@ -51,7 +51,7 @@ class DashboardController < ApplicationController
         @request = TimeOffRequest.new(start: params[:time_off_request][:start].to_time, end: params[:time_off_request][:end].to_time, user_id: current_user.id, status:0, employee_name: @employee)
         if @request.save
             flash[:notice] = "Request successfully created!"
-            redirect_to dashboard_path
+            redirect_to request_time_off_path
         else
             flash[:alert] = @request.errors.full_messages[0]
             render :req_time
