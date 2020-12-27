@@ -37,5 +37,8 @@ Rails.application.routes.draw do
   post 'admin/register_new_user/create', to: 'employee#admin_create_user', as: 'admin_create_user'
   delete 'admin/delete_user/:id', to: 'employee#admin_delete_user', as: 'admin_delete_user'
 
+  get 'new_user/register/:registration_token', to: 'employee#new_user', as: 'new_user'
+  post 'new_user/register/:registration_token/create', to: 'employee#create_user', as: 'create_user'
+
   root 'home#index'
 end

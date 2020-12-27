@@ -18,6 +18,7 @@ class DashboardController < ApplicationController
     def employees
         @admin = current_user
         @employees = @company.users.search(params[:search]).order('l_name ASC')
+        @link = Company.find(current_user.company_id).registration_token
     end
 
     def show_employee
