@@ -12,6 +12,7 @@ class DashboardController < ApplicationController
     def schedule
         @shifts = current_user.shifts
         @punches = current_user.punches
+        @to = current_user.time_off_requests.where(status:2)
     end
 
     def employees
@@ -28,6 +29,7 @@ class DashboardController < ApplicationController
         @employee = User.find(params[:id])
         @shifts = @employee.shifts
         @punches = @employee.punches
+        @to = @employee.time_off_requests.where(status:2)
     end
 
     def employee_punches

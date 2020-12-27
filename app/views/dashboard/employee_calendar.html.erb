@@ -2,6 +2,8 @@
 <% end %>
 <%= content_tag :div, class: "user_punches", data: {upunches: @punches} do %>
 <% end %>
+<%= content_tag :div, class: "user_to", data: {uto: @to} do %>
+<% end %>
 <script>
     
     $(function() {
@@ -16,8 +18,13 @@
         pastPunches = pastPunches.filter(i => i.duration > 0.25).map(i => {
             return {id: i.id, start: i.in, end: i.out, name: "punch", color: '#a7c6c9'}
         })
+
+        var to = $('.user_to').data('uto')
+        to = to.map(i => {
+            return {id: i.id, start: i.start, end: i.end, name: "time off", color: '#d47f2a'}
+        })
             
-        var allEvents = userShifts.concat(pastPunches)
+        var allEvents = userShifts.concat(pastPunches).concat(to)
             
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'timeGridWeek',
@@ -39,5 +46,9 @@
     <div class="key">
         <div class="identifier" id="punch"></div>
         <p>Punch</p>
+    </div>
+    <div class="key">
+        <div class="identifier" id="to"></div>
+        <p>Time Off</p>
     </div>
 </div>
