@@ -1,0 +1,20 @@
+<div class="sign-in-form-container">
+  <div class="sign-in-form admin-register">
+    <h2>New Employee</h2>
+
+    <%= form_for @user, url: admin_create_user_path do |f| %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password" %>
+
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password" %>
+
+      <%= f.text_field :f_name, autocomplete: "first-name", placeholder: "First Name" %>
+
+      <%= f.text_field :l_name, autocomplete: "last-name", placeholder: "Last Name" %>
+        
+      <%= f.submit "Register User" %>
+    <% end %>
+
+  </div>
+</div>

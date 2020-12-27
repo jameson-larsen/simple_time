@@ -19,6 +19,7 @@
     <% end %>
     <p><%= link_to "Punch History/Correct Punches", employee_punches_path(@employee) %></p>
     <p><%= link_to "Schedule, edit, or delete shifts", employee_shifts_path(@employee) %></p>
+    <p><%= link_to "Delete Employee", admin_delete_user_path(@employee), method: :delete, data: {confirm: "Are you sure? Deleting this employee and its associated records can't be undone!"} %></p>
 </div>
 <script>
     $(function() {

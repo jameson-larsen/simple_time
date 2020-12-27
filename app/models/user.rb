@@ -5,6 +5,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  validates_presence_of :f_name
+  validates_presence_of :l_name
+  
   enum user_role: [:employee, :admin]
   enum status: [:is_in, :is_out]
 

@@ -4,6 +4,7 @@
             <%= text_field_tag(:search) %>
             <%= submit_tag("Search") %>
         <% end %>
+        <%= link_to "Register New Employee", admin_new_user_path, style:"display:block;margin-top:15px;" %>
     </div>
     <div class="employee-list-container">
         <% @employees.each do |e|%>

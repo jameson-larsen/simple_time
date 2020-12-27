@@ -33,5 +33,9 @@ Rails.application.routes.draw do
   patch 'time_off_request/:request_id/accept', to: 'time_off_request#accept', as: 'accept_request'
   patch 'time_off_request/:request_id/deny', to: 'time_off_request#deny', as: 'deny_request'
 
+  get 'admin/register_new_user', to: 'employee#admin_new_user', as: 'admin_new_user'
+  post 'admin/register_new_user/create', to: 'employee#admin_create_user', as: 'admin_create_user'
+  delete 'admin/delete_user/:id', to: 'employee#admin_delete_user', as: 'admin_delete_user'
+
   root 'home#index'
 end
