@@ -7,7 +7,7 @@
             <%= submit_tag("Search") %>
         <% end %>
         <%= link_to "Register New Employee", admin_new_user_path, style:"display:block;margin-top:15px;" %>
-        <button id="copy">Send new employee registration link</button>
+        <a id="copy" style="display:block;margin-top:15px;color:blue;text-decoration:underline;cursor:pointer;">Send new employee registration link</a>
     </div>
     <div class="employee-list-container">
         <% @employees.each do |e|%>

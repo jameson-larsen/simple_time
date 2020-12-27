@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get 'admin/register_new_user', to: 'employee#admin_new_user', as: 'admin_new_user'
   post 'admin/register_new_user/create', to: 'employee#admin_create_user', as: 'admin_create_user'
   delete 'admin/delete_user/:id', to: 'employee#admin_delete_user', as: 'admin_delete_user'
+  patch 'employee/:id/upgrade_admin', to: 'employee#upgrade_admin', as: 'upgrade_admin'
 
   get 'new_user/register/:registration_token', to: 'employee#new_user', as: 'new_user'
   post 'new_user/register/:registration_token/create', to: 'employee#create_user', as: 'create_user'

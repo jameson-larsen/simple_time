@@ -48,6 +48,21 @@ class EmployeeController < ApplicationController
         end
     end
 
+    def upgrade_admin
+        @user = User.find(params[:id])
+        if @user.user_role == "employee"
+            @user.update(user_role:1)
+        else
+            @user.update(user_role:0)
+        end
+        if @user.save
+            flash[:notice] = "Success!"
+        else
+            flash[:alert] = "User couldn't be updated!"
+        end
+        redirect_to employee_path(@user)
+    end
+
     private
     def is_admin?
         redirect_to root_path unless current_user.user_role == "admin"
