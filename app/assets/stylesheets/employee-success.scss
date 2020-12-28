@@ -1,0 +1,26 @@
+.employee-success {
+    min-height:100vh;
+    min-width:100vw;
+    background-color:#a7c6c9;
+    & .success-message {
+        height:300px;
+        width:500px;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        background-color:white;
+        border-radius:5px;
+        -webkit-box-shadow: -6px 6px 5px 0px rgba(110,110,110,1);
+        -moz-box-shadow: -6px 6px 5px 0px rgba(110,110,110,1);
+        box-shadow: -6px 6px 5px 0px rgba(110,110,110,1);
+        text-align:center;
+        & h2 {
+            margin:40px auto 40px auto;
+        }
+        & p {
+            text-align:left;
+            margin:25px 0 0 15px;
+        }
+    }
+}

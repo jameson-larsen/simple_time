@@ -1,7 +1,7 @@
 class EmployeeController < ApplicationController
     protect_from_forgery with: :exception
     before_action :authenticate_user!, except: [:new_user, :create_user]
-    before_action :is_admin?, except: [:new_user, :create_user]
+    before_action :is_admin?, except: [:new_user, :create_user, :change_password, :post_changed_password]
     before_action :valid_link?, only: [:new_user, :create_user]
 
     def admin_new_user
@@ -10,14 +10,18 @@ class EmployeeController < ApplicationController
 
     def admin_create_user
         tz = Company.find(current_user.company_id).time_zone
-        @user = User.new(email: params[:user][:email], password: params[:user][:password], password_confirmation: params[:user][:password_confirmation], f_name: params[:user][:f_name], l_name: params[:user][:l_name], user_role:0, company_id: current_user.company_id, time_zone: tz)
+        @user = User.new(email: params[:user][:email], password: "temp123", password_confirmation: "temp123", f_name: params[:user][:f_name], l_name: params[:user][:l_name], user_role:0, company_id: current_user.company_id, time_zone: tz, password_changed:0)
         if @user.save
             flash[:notice] = "Employee successfully added!"
-            redirect_to employees_path
+            redirect_to new_employee_success_path(@user)
         else
             flash[:alert] = @user.errors.full_messages[0]
             render :admin_new_user
         end
+    end
+
+    def success
+        @user = User.find(params[:id])
     end
 
     def admin_delete_user
@@ -38,13 +42,29 @@ class EmployeeController < ApplicationController
     def create_user
         company = Company.where(registration_token: params[:registration_token]).first
         tz = company.time_zone
-        @user = User.new(email: params[:user][:email], password: params[:user][:password], password_confirmation: params[:user][:password_confirmation], f_name: params[:user][:f_name], l_name: params[:user][:l_name], user_role:0, company_id: company.id, time_zone: tz)
+        @user = User.new(email: params[:user][:email], password: params[:user][:password], password_confirmation: params[:user][:password_confirmation], f_name: params[:user][:f_name], l_name: params[:user][:l_name], user_role:0, company_id: company.id, time_zone: tz, password_changed:1)
         if @user.save
             flash[:notice] = "Profile successfully created!"
             redirect_to new_user_session_path
         else
             flash[:alert] = "Profile could not be created!"
             render :create_user
+        end
+    end
+
+    def change_password
+        @user = current_user
+    end
+
+    def post_changed_password
+        @user = current_user
+        @user.update(password: params[:user][:password], password_confirmation: params[:user][:password], password_changed:1)
+        if @user.save
+            flash[:notice] = "Password successfully changed!"
+            redirect_to new_user_session_path
+        else
+            flash[:alert] = "Password could not be changed, please try again!"
+            render :change_password
         end
     end
 

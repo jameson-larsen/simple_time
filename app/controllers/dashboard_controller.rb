@@ -6,7 +6,11 @@ class DashboardController < ApplicationController
     before_action :same_company?, only: [:show_employee, :employee_calendar, :employee_punches, :employee_shifts]
 
     def index
-        @punches = current_user.punches
+        if current_user.p_unchanged?
+            redirect_to first_login_password_path
+        else
+            @punches = current_user.punches
+        end
     end
 
     def schedule

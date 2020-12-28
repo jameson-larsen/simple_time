@@ -9,6 +9,7 @@ class User < ApplicationRecord
   
   enum user_role: [:employee, :admin]
   enum status: [:is_in, :is_out]
+  enum password_changed: [:p_unchanged, :p_changed]
 
   belongs_to :company
   has_many :punches, dependent: :destroy
