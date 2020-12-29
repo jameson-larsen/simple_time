@@ -23,14 +23,14 @@
             font-weight:400;
             margin-bottom:25px;
         }
-        & input[type=email], input[type=password], input[type=text] {
+        & input[type=email], input[type=password], input[type=text], input[type=number], #company_time_zone {
             height: 40px;
             border: none;
             border-bottom: 1px solid #b3b3b3;
             width: 80%;
             margin:10px auto;
         }
-        & input[type=email]:focus, input[type=password]:focus, input[type=text]:focus {
+        & input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, input[type=number]:focus, #company_time_zone:focus {
             border:none;
             border-bottom:1px solid #6EC2CB;
             outline:none;

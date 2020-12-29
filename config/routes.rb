@@ -44,5 +44,10 @@ Rails.application.routes.draw do
   get 'new_user/change_password', to: 'employee#change_password', as: 'first_login_password'
   patch 'new_user/change_password/change', to: 'employee#post_changed_password', as: 'post_changed_password'
 
+  get 'new_company', to: 'company#new', as: 'new_company'
+  post 'new_company/create', to: 'company#create', as: 'create_company'
+  get 'new_company/:company_id/first_user', to: 'company#first_user', as: 'add_initial_user'
+  post 'new_company/:company_id/first_user/create', to: 'company#create_first_user', as: 'create_first_user'
+
   root 'home#index'
 end

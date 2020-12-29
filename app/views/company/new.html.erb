@@ -1,0 +1,17 @@
+<div class="sign-in-form-container">
+  <div class="sign-in-form admin-register">
+    <h2>New Registration</h2>
+
+    <%= form_for @company, url: create_company_path do |f| %>
+
+      <%= f.text_field :name, placeholder: "Company Name" %>
+
+      <%= f.number_field :num_employees, placeholder: "Number of Employees" %>
+
+      <%= f.time_zone_select :time_zone %>
+        
+      <%= f.submit "Next", style:"margin-top:90px;" %>
+    <% end %>
+
+  </div>
+</div>
