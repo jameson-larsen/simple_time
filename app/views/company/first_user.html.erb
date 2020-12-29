@@ -1,5 +1,5 @@
 <div class="sign-in-form-container">
-  <div class="sign-in-form admin-register">
+  <div class="sign-in-form admin-register first-user">
     <h2>Admin User Registration</h2>
     <p style="text-align:center;margin-top:10px;margin-bottom:10px;font-size:10px;">Create your initial user, which will by default have admin privileges</p>
     <%= form_for @user, url: create_first_user_path(@company) do |f| %>
@@ -14,7 +14,7 @@
 
       <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
       
-      <%= f.submit "Next", style:"margin-top:90px;" %>
+      <%= f.submit "Next", style:"margin-top:50px;" %>
     <% end %>
 
   </div>

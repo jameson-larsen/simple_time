@@ -72,3 +72,9 @@
 .sign-in-form.admin-register {
     height:520px;
 }
+.sign-in-form.admin-register.first-user {
+    & h2 {
+        font-size:25px;
+    }
+    height:600px;
+}
