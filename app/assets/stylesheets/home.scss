@@ -457,13 +457,17 @@ html {
         position:relative;
         background-color: #6EC2CB;
         & .list-div {
-            height:70vh;
+            height:75vh;
             width:40%;
             background-color:white;
             position:absolute;
             top:50%;
             left:50%;
             transform: translate(-50%,-50%);
+            border-radius:5px;
+            -webkit-box-shadow: -6px 6px 5px 0px rgba(110,110,110,1);
+            -moz-box-shadow: -6px 6px 5px 0px rgba(110,110,110,1);
+            box-shadow: -6px 6px 5px 0px rgba(110,110,110,1);
             & h3 {
                 text-align:center;
                 font-size:30px;
@@ -478,6 +482,28 @@ html {
                 }
             }
         }
+        & .learn-more {
+            position:absolute;
+            bottom:10px;
+            left:50%;
+            transform:translateX(-50%);
+            cursor:pointer;
+            text-align:center;
+            & img {
+                width:30px;
+                margin-top:10px;
+                &:hover {
+                    width:32px;
+                    margin-top:8px;
+                }
+            }
+            & p {
+                color:white;
+                @include mq('lgPhone') {
+                    font-size:13px;
+                }
+            }
+         }
     }
 }
 
