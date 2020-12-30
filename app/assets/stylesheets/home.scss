@@ -18,9 +18,11 @@ html {
     background-attachment:fixed;
     & .header {
         height:100vh;
+        min-height:850px;
         padding-top:45vh;
         box-sizing:border-box;
         text-align:center;
+        position: relative;
         & input[type=submit] {
             position:absolute;
             margin:0;
@@ -115,6 +117,7 @@ html {
     }
     & .section-1 {
         height:100vh;
+        min-height:850px;
         width:100%;
         background-color:#6EC2CB;
         padding-top:50px;
@@ -206,6 +209,7 @@ html {
     }
     & .section-2 {
         height:100vh;
+        min-height:850px;
         width:100%;
         background-color:rgba(0,0,0,0);
         padding-top:50px;
@@ -298,6 +302,7 @@ html {
     }
     & .section-3 {
         height:100vh;
+        min-height:850px;
         width:100%;
         background-color:#617073;
         padding-top:50px;
@@ -388,9 +393,10 @@ html {
         }
     }
 
-    & .section-4 {
+    & .section-5 {
         width:100%;
         height:100vh;
+        min-height:850px;
         display:flex;
         align-items:center;
         justify-content:center;
@@ -398,15 +404,23 @@ html {
             width:40%;
             background-color:white;
             height:100vh;
+            min-height:850px;
             padding:0 40px 0 40px;
+            @include mq('desktop') {
+                width:45%;
+            }
+            @include mq('tablet') {
+                width:55%;
+            }
             @include mq('smTablet') {
-                width:60%;
+                width:65%;
             }
             @include mq('lgPhone') {
                 width:80%;
             }
             @include mq('phone') {
                 width:100%;
+                top:45%;
             }
             & form {
                 text-align:center;
@@ -451,23 +465,21 @@ html {
         }
     }
 
-    & .section-features {
+    & .section-4 {
         width:100%;
         height:100vh;
+        min-height:915px;
+        background-color:#a7c6c9;
+        display:flex;
+        align-items:center;
+        justify-content:center;
         position:relative;
-        background-color: #6EC2CB;
         & .list-div {
-            height:80vh;
+            height:100vh;
+            min-height:915px;
             width:40%;
             background-color:white;
-            position:absolute;
-            top:50%;
-            left:50%;
-            transform: translate(-50%,-50%);
-            border-radius:5px;
-            -webkit-box-shadow: -6px 6px 5px 0px rgba(110,110,110,1);
-            -moz-box-shadow: -6px 6px 5px 0px rgba(110,110,110,1);
-            box-shadow: -6px 6px 5px 0px rgba(110,110,110,1);
+            padding:0 40px 0 40px;
             @include mq('desktop') {
                 width:45%;
             }
@@ -486,12 +498,13 @@ html {
             }
             & h3 {
                 text-align:center;
-                font-size:30px;
-                margin-top:60px;
-                margin-bottom:40px;
+                font-size:40px;
+                margin-top:50px;
+                margin-bottom:20px;
+                font-weight:300;
                 @include mq('lgPhone') {
                     margin-top:20px;
-                    font-size:20px;
+                    font-size:25px;
                     margin-bottom:20px;
                 }
             }
@@ -501,18 +514,55 @@ html {
                 list-style-type: square;
                 & li {
                     margin-bottom:20px;
+                    font-weight:lighter;
+                    & span {
+                        font-weight:400;
+                    }
                     @include mq('desktop') {
                         margin-bottom:10px;
+                        font-size:15px;
                     }
                     @include mq('smTablet') {
                         font-size:14px;
                     }
                     @include mq('phone') {
-                        font-size:10px;
+                        font-size:12px;
                     }
                 }
                 @include mq('desktop') {
                     width:85%;
+                    margin-left:25px;
+                }
+                @include mq('smTablet') {
+                    width:95%;
+                    margin-left:15px;
+                }
+            }
+            .trial-btn {
+                position:absolute;
+                left:50%;
+                transform:translateX(-50%);
+                bottom:138px;
+                height:60px;
+                width:340px;
+                background-color:#617073;
+                color:white;
+                font-size:22px;
+                font-weight:300;
+                cursor:pointer;
+                @include mq('phone') {
+                    height:45px;
+                    width:250px;
+                    font-size:10px;
+                }
+                &:hover {
+                    width:342px;
+                    height:62px;
+                    bottom:137px;
+                    @include mq('phone') {
+                        height:47px;
+                        width:252px;
+                    }
                 }
             }
         }
@@ -532,47 +582,11 @@ html {
                 }
             }
             & p {
-                color:white;
+                color:black;
                 @include mq('lgPhone') {
                     font-size:13px;
                 }
             }
          }
-    }
-}
-
-.thank-you {
-    background-color:#617073;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    height:100vh;
-    text-align:center;
-    width:100%;
-    & h1 {
-        font-size:60px;
-        margin-bottom:20px;
-    }
-    & p {
-        font-size:22px;
-        margin-bottom:15px;
-    }
-    & a {
-        color:white;
-        font-size:17px;
-    }
-}
-.trial-btn {
-    margin:0 auto;
-    height:50px;
-    width:200px;
-    background-color:#617073;
-    color:white;
-    cursor:pointer;
-    @include mq('phone') {
-        height:30px;
-        width:150px;
-        font-size:10px;
     }
 }
