@@ -69,6 +69,26 @@ class DashboardController < ApplicationController
         @requests = TimeOffRequest.where(status:0)
     end
 
+    def report
+        @employees = Company.find(current_user.company_id).users.all
+        @start = params[:start_date]
+        @end = params[:end_date]
+    end
+
+    def edit_profile
+    end
+
+    def edit_profile_post
+        current_user.update(email: params[:user][:email], time_zone: params[:user][:time_zone])
+        if current_user.save
+            flash[:notice] = "Profile successfully updated!"
+            redirect_to dashboard_path
+        else
+            flash[:alert] = current_user.errors.full_messages[0]
+            render :edit_profile
+        end
+    end
+
     private
     def is_admin?
         redirect_to root_path unless current_user.user_role == "admin"

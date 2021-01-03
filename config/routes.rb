@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'employee/:id/punches', to: 'dashboard#employee_punches', as: 'employee_punches'
   get 'employee/:id/shifts', to: 'dashboard#employee_shifts', as: 'employee_shifts'
   get 'time_off_requests', to: 'dashboard#view_requests', as: 'view_requests'
+  get 'edit_profile', to: 'dashboard#edit_profile', as: 'edit_profile'
+  patch 'edit_profile_post', to: 'dashboard#edit_profile_post', as: 'edit_profile_post'
 
   patch 'clock_in', to: 'punch#clock_in'
   patch 'clock_out', to: 'punch#clock_out'
@@ -48,6 +50,11 @@ Rails.application.routes.draw do
   post 'new_company/create', to: 'company#create', as: 'create_company'
   get 'new_company/:company_id/first_user', to: 'company#first_user', as: 'add_initial_user'
   post 'new_company/:company_id/first_user/create', to: 'company#create_first_user', as: 'create_first_user'
+
+  get 'export_reports', to: 'export#new', as: 'new_report'
+  post 'export_reports/generate', to: 'export#create', as: 'create_report'
+  get 'show_report/:start_date/:end_date', to: 'dashboard#report', as: 'display_report' 
+  get 'export_generated_report/:start_date/:end_date', to: 'export#export', as: 'export_generated_report'
 
   root 'home#index'
 end

@@ -1,0 +1,15 @@
+<div class="sign-in-form-container">
+  <div class="sign-in-form admin-register">
+    <h2>Generate Report</h2>
+
+    <p>Input start and end date to show timekeeping data between.</p>
+    <%= form_for :export, url: create_report_path do |f| %>
+        <%= f.text_field :start_date, class: "datepicker"%>
+
+        <%= f.text_field :end_date, class: "datepicker" %>
+        
+        <%= f.submit "Create Report", style: "margin-top:90px;" %>
+    <% end %>
+
+  </div>
+</div>

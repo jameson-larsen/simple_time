@@ -48,6 +48,10 @@
                     <h1><%= TimeOffRequest.where(status: 0).count %></h1>
                     <p>TO Requests</p>
                 <% end %>
+                <%= button_to new_report_path, method: :get, class: :"sidebar-btn" do %>
+                    <%= image_tag("https://simple-time-assets.s3-us-west-2.amazonaws.com/arrow-242-256.png") %>
+                    <p>Reports</p>
+                <% end %>
             <% end %>
         </div>
         <div class="dashboard-content">
@@ -61,6 +65,7 @@
                 <p>Role: <%= current_user.user_role %></p>
                 <p>Last Punch: <span id="last-user-punch"></span></p>
                 <p>Hours this week: <%= current_user.weekly_hours %></p>
+                <p><%= link_to "Edit Profile", edit_profile_path %></p>
             </div>
             <div class="main-content">
                 <%= yield %>

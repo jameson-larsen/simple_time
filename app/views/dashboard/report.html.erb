@@ -1,0 +1,11 @@
+<h2 style="margin-top:15px;margin-left:15px;"><%= @start %> - <%= @end %></h2>
+<div class="punch-main-container">
+<p style="margin-top:10px;margin-left:15px;"><%= link_to "Export as Excel" , export_generated_report_path(@start, @end, format: :xlsx) %></p>
+    <% @employees.each do |e| %>
+        <div class="punch-section-container">
+            <%= e.l_name + ", " + e.f_name + "  -  " %>
+            <%= "Hours Worked: " + e.hours_between(@start, @end).to_s + " hours,  " %>
+            <%= "Hours Scheduled: " + e.hours_scheduled_between(@start, @end).to_s + " hours" %>
+        </div>
+    <% end %>
+</div>

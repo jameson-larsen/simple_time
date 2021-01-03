@@ -1,0 +1,10 @@
+<div class="edit-profile-form">
+    <%= form_for current_user, url: edit_profile_post_path do |r| %>
+        <h2 style="margin-top:15px;">Edit Profile</h2>
+        <%= r.email_field :email, placeholder: "Email" %><br>
+            
+        <%= r.time_zone_select :time_zone %><br>
+
+        <%= r.submit "Submit" %>
+    <% end %>
+</div>

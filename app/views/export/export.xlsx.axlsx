@@ -1,0 +1,20 @@
+wb = xlsx_package.workbook
+wb.styles do |style|
+    project_heading = style.add_style(b: true, sz: 14)
+    heading = style.add_style(b: true)
+    wb.add_worksheet(name: "Report") do |sheet|
+        # Add a title row
+        sheet.add_row ["Employee Time Report"], style: project_heading
+        # Add the date this was downloaded
+        sheet.add_row ["Downloaded at", Time.now.strftime("%b %-d, %Y")]
+        sheet.add_row [@start + "-" + @end]
+        # Add a blank row
+        sheet.add_row []
+        # Create the header row
+        sheet.add_row ["Employee", "Hours Worked", "Hours Scheduled"]
+        # Create entries for each item
+        @employees.each do |e|
+            sheet.add_row [e.l_name + ", " + e.f_name, e.hours_between(@start, @end), e.hours_scheduled_between(@start,@end)]
+        end
+    end
+end
